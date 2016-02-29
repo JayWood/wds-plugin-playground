@@ -1,0 +1,17 @@
+{
+  "generator-plugin-wp": {
+    "name": "WDS Client Plugin Name",
+    "homepage": "http://webdevstudios.com",
+    "description": "A radical new plugin for WordPress!",
+    "version": "0.1.0",
+    "author": "WebDevStudios",
+    "authoremail": "contact@webdevstudios.com",
+    "authorurl": "http://webdevstudios.com",
+    "license": "GPLv2",
+    "slug": "wds-client-plugin-name",
+    "classname": "WDS_Client_Plugin_Name",
+    "classprefix": "WDSCPN_",
+    "prefix": "wds_client_plugin_name",
+    "year": 2016
+  }
+}

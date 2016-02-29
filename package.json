@@ -1,0 +1,17 @@
+{
+	"name": "wds-client-plugin-name",
+	"title": "WDS Client Plugin Name",
+	"version": "0.1.0",
+	"description": "A radical new plugin for WordPress!",
+	"author": {
+		"name": "WebDevStudios",
+		"url": "http://webdevstudios.com"
+	},
+	"license": "GPLv2",
+	"devDependencies": {
+	    "grunt": "latest",
+	    "grunt-contrib-watch": "latest",
+	    "grunt-wp-i18n": "latest",
+	    "load-grunt-tasks": "latest"
+	}
+}
