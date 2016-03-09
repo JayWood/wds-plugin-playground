@@ -151,7 +151,7 @@ class WDS_Client_Plugin_Name {
 	 * @since  0.1.0
 	 * @return void
 	 */
-	public function plugin_classes() {
+	public function initalize_shortcode_button() {
 		// Attach other plugin classes to the base plugin class.
 		// $this->plugin_class = new WDSCPN_Plugin_Class( $this );
 
@@ -176,7 +176,7 @@ class WDS_Client_Plugin_Name {
 
 		add_action( 'init', array( $this, 'init' ) );
 
-		$this->plugin_classes();
+		$this->initalize_shortcode_button();
 
 		$this->test_shortcode->hooks();
 		$this->test_shortcode_admin->hooks();
