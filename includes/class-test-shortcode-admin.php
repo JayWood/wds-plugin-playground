@@ -3,7 +3,7 @@
 class WDSCPN_Test_Shortcode_Admin extends WDS_Shortcode_Admin {
 
 	public function hooks() {
-		add_filter( "{$this->shortcode}_shortcode_fields", array( $this, 'filter_shortcode_fields' ), 10, 3 );
+		add_filter( "{$this->shortcode}_shortcode_fields", array( $this, 'filter_shortcode_attributes' ), 10, 3 );
 		parent::hooks();
 	}
 
@@ -37,6 +37,13 @@ class WDSCPN_Test_Shortcode_Admin extends WDS_Shortcode_Admin {
 			'id'   => 'some_default_key',
 		);
 
+		$fields[] = array(
+			'name' => __( 'Some Image', 'textdomain' ),
+//			'desc' => __( 'This is a description, catchy huh!', 'textdomain' ),
+			'type' => 'file',
+			'id'   => 'attachment_image',
+		);
+
 		return $fields;
 	}
 
@@ -50,8 +57,6 @@ class WDSCPN_Test_Shortcode_Admin extends WDS_Shortcode_Admin {
 	 * @return array
 	 */
 	public function filter_shortcode_attributes( $field_atts, $sc_instance, $unmodified ) {
-		// error_log( '$unmodified: '. print_r( $unmodified, true ) );
-		// error_log( '$field_atts: '. print_r( $field_atts, true ) );
 
 		// 'file' type field id
 		$file_field_id = 'attachment_image';
