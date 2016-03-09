@@ -143,8 +143,6 @@ class WDS_Client_Plugin_Name {
 		$this->basename = plugin_basename( __FILE__ );
 		$this->url      = plugin_dir_url( __FILE__ );
 		$this->path     = plugin_dir_path( __FILE__ );
-
-		$this->plugin_classes();
 	}
 
 	/**
@@ -177,6 +175,8 @@ class WDS_Client_Plugin_Name {
 		register_deactivation_hook( __FILE__, array( $this, '_deactivate' ) );
 
 		add_action( 'init', array( $this, 'init' ) );
+
+		$this->plugin_classes();
 
 		$this->test_shortcode_admin->hooks();
 	}
