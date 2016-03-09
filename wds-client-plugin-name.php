@@ -116,7 +116,7 @@ class WDS_Client_Plugin_Name {
 
 	/**
 	 * Instance of WDSCPN_Shortcode_Admin
-	 * @var WDSCPN_Shortcode_Admin
+	 * @var WDSCPN_Test_Shortcode_Admin
 	 */
 	protected $test_shortcode_admin = null;
 
@@ -178,6 +178,7 @@ class WDS_Client_Plugin_Name {
 
 		$this->plugin_classes();
 
+		$this->test_shortcode->hooks();
 		$this->test_shortcode_admin->hooks();
 	}
 
