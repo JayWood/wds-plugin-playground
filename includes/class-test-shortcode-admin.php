@@ -3,7 +3,7 @@
 class WDSCPN_Test_Shortcode_Admin extends WDS_Shortcode_Admin {
 
 	public function hooks() {
-		add_filter( $this->shortcode . '_shortcode_fields', array( $this, 'filter_shortcode_field' ), 10, 2 );
+		add_filter( "{$this->shortcode}_shortcode_fields", array( $this, 'filter_shortcode_fields' ), 10, 3 );
 		parent::hooks();
 	}
 
@@ -41,23 +41,34 @@ class WDSCPN_Test_Shortcode_Admin extends WDS_Shortcode_Admin {
 	}
 
 	/**
-	 * Filters the data sent to the editor.
+	 * Filter attribute return values
 	 *
-	 * @param array $fields
-	 * @param Shortcode_Button $shortcode_button
+	 * @param array $field_atts
+	 * @param Shortcode_Button $sc_instance
+	 * @param array $unmodified
 	 *
 	 * @return array
 	 */
-	function filter_shortcode_field( $fields, $shortcode_button ) {
-		if ( ! $shortcode_button instanceof Shortcode_Button ) {
-			return $fields;
+	public function filter_shortcode_attributes( $field_atts, $sc_instance, $unmodified ) {
+		// error_log( '$unmodified: '. print_r( $unmodified, true ) );
+		// error_log( '$field_atts: '. print_r( $field_atts, true ) );
+
+		// 'file' type field id
+		$file_field_id = 'attachment_image';
+		if ( isset( $unmodified[ $file_field_id . '_id' ] ) && $unmodified[ $file_field_id . '_id' ] ) {
+			$field_atts['image_id'] = $unmodified[ $file_field_id . '_id' ];
 		}
 
-		// Can get CMB2 Objects
-		// $cmb_obj = $shortcode_button->get_cmb_object();
-
-		// Do all your fancy stuff here!
-
-		return $fields;
+		/*
+		 * If you send back `$field_atts['sc_content']`, and you have 'include_close' set to true,
+		 * The contents of the shortcode will be set to this value.
+		 * Example:
+		 *
+		 * $field_atts['sc_content'] = 'Some content';
+		 *
+		 * // generated shortcode:
+		 * [yourshortcode ...attributes...]Some content[/yourshortcode]
+		 */
+		return $field_atts;
 	}
 }
